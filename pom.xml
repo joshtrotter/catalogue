@@ -11,7 +11,7 @@
 	<properties>
 		<webappDirectory>src/main/webapp</webappDirectory>
 		<org.springframework.version>3.2.0.RELEASE</org.springframework.version>
-		<test>git</test>
+		<test>gitUpdate</test>
 	</properties>
 
 	<dependencies>
