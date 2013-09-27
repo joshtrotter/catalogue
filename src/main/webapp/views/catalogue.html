@@ -1,0 +1,83 @@
+<!doctype html>
+<html ng-app>
+<head>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+<script src="catalogue.js"></script>
+</head>
+<body>
+
+	<h1 align="center">My Catalogues</h1>
+	<hr>
+	
+	<div ng-controller="MoviesCtrl" ng-switch on="!movies">
+		<a ng-switch-when=true href="" ng-click="loadMovies()">Load Movie Catalogue</a>
+		<div ng-switch-when=false>
+			<h2>{{movies.name}}</h2>
+			<table>
+				<thead>
+				<tr align="left">
+					<th>Title</th>
+					<th>Director</th>
+				</tr>
+				</thead>
+				<tbody>
+				<tr ng-repeat="movie in movies.items">
+					<td>{{movie.title}}</td>
+					<td>{{movie.director}}</td>
+				</tr>
+				</tbody>				
+			</table>		
+
+			<form ng-submit="addMovie()">
+				<table>
+				<tr>
+					<td><input type="text" ng-model="newMovie.title" size="25"
+						placeholder="Enter Movie Title" />
+					</td>
+					<td><input type="text" ng-model="newMovie.director" size="25"
+						placeholder="Enter Movie Director" />
+					</td>
+					<td><input type="submit" value="Add"/></td>
+				</tr>
+				</table>
+			</form>
+		</div>
+	</div>
+	
+	<br/>
+	
+	<div ng-controller="BooksCtrl" ng-switch on="!books">
+		<a ng-switch-when=true href="" ng-click="loadBooks()">Load Books Catalogue</a>
+		<div ng-switch-when=false>
+			<h2>{{books.name}}</h2>
+			<table>
+				<thead>
+				<tr align="left">
+					<th>Title</th>
+					<th>Author</th>
+				</tr>
+				</thead>
+				<tbody>
+				<tr ng-repeat="book in books.items">
+					<td>{{book.title}}</td>
+					<td>{{book.author}}</td>
+				</tr>
+				</tbody>
+				<tfoot>
+				<tr>
+					<td><input type="text" ng-model="newBook.title" size="25"
+						placeholder="Enter Book Title" />
+					</td>
+					<td><input type="text" ng-model="newBook.author" size="25"
+						placeholder="Enter Book Author" />
+					</td>
+					<td><input type="submit" value="Add" ng-click="addBook()"/></td>
+				</tr>
+				</tfoot>
+			</table>
+		</div>
+	</div>
+		
+</body>
+</html>
