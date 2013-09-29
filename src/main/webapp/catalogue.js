@@ -1,36 +1,34 @@
-function MoviesCtrl($scope) {
+app = angular.module('myapp', ['ngResource']);
+
+function MoviesCtrl($scope, $resource) {
 	
-	$scope.newMovie = {"director":"","title":""};
+	$scope.newMovie = {"director":"","title":""};	
+	var movieResource = $resource('/api/v1/catalogue/movies');
 			
 	$scope.loadMovies = function() {
-		$scope.movies = {"name":"My Movies","items":[
-		                                             {"director":"Quentin Tarantino","title":"Pulp Fiction"},
-		                                             {"director":"Stanley Kubrick","title":"Spartacus"},
-		                                             {"director":"Sean Penn","title":"Into the Wild"}],
-		                                             "parametricType":"trotterj.catalogue.api.domain.Movie"};		
+		$scope.movies = movieResource.get(); //GET movie collection from server	
 	};
 	
 	$scope.addMovie = function() {
 		$scope.movies.items.push({director:$scope.newMovie.director,title:$scope.newMovie.title});
+		$scope.movies.$save(); //POST updated movie collection to server
 		$scope.newMovie.director = '';
 		$scope.newMovie.title = '';
 	};
 }
 
-function BooksCtrl($scope) {
+function BooksCtrl($scope, $resource) {
 	
 	$scope.newBook = {"author":"","title":""};
+	var bookResource = $resource('/api/v1/catalogue/books');
 	
 	$scope.loadBooks = function() {
-		$scope.books = {"name":"My Books","items":[
-		                                           {"title":"The Power of One","author":"Bryce Courtenay"},
-		                                           {"title":"One Flew Over the Cuckoo's Nest","author":"Ken Kesey"},
-		                                           {"title":"When the lion feeds","author":"Wilbur Smith"}],
-		                                           "parametricType":"trotterj.catalogue.api.domain.Book"};
+		$scope.books = bookResource.get();
 	};
 	
 	$scope.addBook = function() {
 		$scope.books.items.push({author:$scope.newBook.author,title:$scope.newBook.title});
+		$scope.books.$save();
 		$scope.newBook.author = '';
 		$scope.newBook.title = '';
 	};

@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import trotterj.catalogue.api.domain.Book;
 import trotterj.catalogue.api.domain.Catalogue;
+import trotterj.catalogue.api.domain.Movie;
 import trotterj.catalogue.api.service.CatalogueService;
 
 /**
@@ -33,12 +35,12 @@ public class CatalogueController {
 		}
 	}
 	
-	@RequestMapping(value="/{catalogueType}", method = RequestMethod.PUT)
+	@RequestMapping(value="/{catalogueType}", method = RequestMethod.POST)
 	public @ResponseBody void updateCatalogue(@RequestBody Catalogue<?> catalogue, @PathVariable String catalogueType) {
 		if ("movies".equals(catalogueType)) {
-			service.setMyMovies(catalogue);
+			service.setMyMovies((Catalogue<Movie>) catalogue);
 		} else {
-			service.setMyBooks(catalogue);
+			service.setMyBooks((Catalogue<Book>) catalogue);
 		}
 	}
 

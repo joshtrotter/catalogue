@@ -18,27 +18,27 @@ import trotterj.catalogue.api.domain.Movie;
 @Service
 public class CatalogueService {
 	
-	private Catalogue<?> myMovies;
-	private Catalogue<?> myBooks;
+	private Catalogue<Movie> myMovies;
+	private Catalogue<Book> myBooks;
 	
 	public CatalogueService() {
 		myMovies = initMovies();
 		myBooks = initBooks();
 	}
 		
-	public Catalogue<?> getMyMovies() {
+	public Catalogue<Movie> getMyMovies() {
 		return myMovies;
 	}
 
-	public void setMyMovies(Catalogue<?> myMovies) {
+	public void setMyMovies(Catalogue<Movie> myMovies) {
 		this.myMovies = myMovies;
 	}
 
-	public Catalogue<?> getMyBooks() {
+	public Catalogue<Book> getMyBooks() {
 		return myBooks;
 	}
 
-	public void setMyBooks(Catalogue<?> myBooks) {
+	public void setMyBooks(Catalogue<Book> myBooks) {
 		this.myBooks = myBooks;
 	}
 

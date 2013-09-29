@@ -21,7 +21,7 @@
 	</servlet-mapping>
 	
 	<welcome-file-list>
-		<welcome-file>views/catalogue.html</welcome-file>
+		<welcome-file>catalogue.html</welcome-file>
 	</welcome-file-list>
 	
 </web-app>
